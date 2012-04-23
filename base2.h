@@ -12,9 +12,9 @@ void inputBinary(int *nbit, int number[], int DEBUG) {
 		int n;
 		scanf("%d", &n);
 		*nbit = n;
-		if (DEBUG && *nbit > 31)
+		if (DEBUG && (*nbit > 31 || *nbit <= 0))
 			printf("Error: Number of bits is too high!");
-	} while (*nbit > 31);
+	} while (*nbit <= 0 || *nbit > 31);
 
 	int i;
 	for (i = *nbit - 1; i >= 0; i--) {
@@ -22,7 +22,7 @@ void inputBinary(int *nbit, int number[], int DEBUG) {
 			printf("Enter bit #%d: ", i + 1);
 			scanf("%d", &number[i]);
 			if (number[i] != 0 && number[i] != 1 && DEBUG)
-				puts("Error: Value not allowed!");
+				puts("Error: Value not allowed!\n");
 		} while (number[i] != 0 && number[i] != 1);
 	}
 
